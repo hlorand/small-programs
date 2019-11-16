@@ -13,4 +13,4 @@ Sudoku Solver in PHP. It uses the [backtrack](https://en.wikipedia.org/wiki/Sudo
 
 Sokoban game written in C without any graphic library. Only 100 lines of code.
 
-![](ascii-sokoban/ascii-sokoban.gif)
+![](ascii-sokoban/ascii_sokoban.gif)
