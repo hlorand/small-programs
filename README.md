@@ -15,6 +15,13 @@ Sokoban game written in C without any graphic library. Only 100 lines of code.
 
 ![](ascii-sokoban/ascii-sokoban.gif)
 
+[Image noise remover (Python)](image-noise-remover)
+-----------------
+
+This tool removes the noise from low-light images with image stacking.
+
+![](image-noise-remover/image-noise-remover.jpg)
+
 [Snake (C, Allegro Game Engine)](snake)
 -----------------
 
