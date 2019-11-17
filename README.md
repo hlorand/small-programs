@@ -22,6 +22,13 @@ This tool removes the noise from low-light images with image stacking.
 
 ![](image-noise-remover/image-noise-remover.jpg)
 
+[Single file PHP blog (PHP)](single-file-php-blog)
+-----------------
+
+The simplest single file PHP blog. Only 75 lines of code!
+
+![](single-file-php-blog/single-file-php-blog.jpg)
+
 [Snake (C, Allegro Game Engine)](snake)
 -----------------
 
