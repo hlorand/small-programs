@@ -22,6 +22,13 @@ This tool removes the noise from low-light images with image stacking.
 
 ![](image-noise-remover/image-noise-remover.jpg)
 
+[Magic Porn Blocker (Python)](magic-porn-blocker)
+-----------------
+
+Blocks every adult themed websites.
+
+![](magic-porn-blocker/magic-porn-blocker.png)
+
 [Single file PHP blog (PHP)](single-file-php-blog)
 -----------------
 
