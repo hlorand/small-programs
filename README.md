@@ -29,6 +29,13 @@ The simplest single file PHP blog. Only 75 lines of code!
 
 ![](single-file-php-blog/single-file-php-blog.png)
 
+[FFMPEG MP4 Command generator (HTML JS)](ffmpeg-command-generator)
+-----------------
+
+This tool helps you to easily generate FFmpeg commands to convert MP4 video files. Just select the settings by filling out a form, and copy the generated command. 
+
+![](ffmpeg-command-generator/ffmpeg-command-generator.png)
+
 [Snake (C, Allegro Game Engine)](snake)
 -----------------
 
