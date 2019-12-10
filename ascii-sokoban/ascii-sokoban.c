@@ -71,7 +71,7 @@ int main(){
         }
         /**************** move player ****************/
         char irany = getch();
-        int xcheck, ycheck;
+        int xcheck=0, ycheck=0;
         switch(irany){
             case 'w': xcheck=-1; ycheck=0; break;           // move up
             case 'a': xcheck=0; ycheck=-1; break;           // move left
@@ -79,7 +79,7 @@ int main(){
             case 'd': xcheck=0; ycheck=1; break;            // move right
             case 'r': main(); break;                        // restart level
             case 'n': if(l<l_max-1) { l++; main(); } break;   // next level
-        }
+		}
 
         // if the cell in front of us contains a ball and in front of the ball there is an empty space
         if( level[l][pos_x+xcheck][pos_y+ycheck] == 'o' && level[l][pos_x+2*xcheck][pos_y+2*ycheck] == ' '){
