@@ -3,6 +3,8 @@ Single file PHP blog
 
 The simplest single file PHP blog. Only 75 lines of code!
 
+[index.php](index.php)
+
 ### Usage
 
 Place your blog content inside `/posts` folder. 
