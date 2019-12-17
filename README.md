@@ -1,6 +1,13 @@
 
 This is a collection of my small programs that do not deserve a separate repository one by one.
 
+[Image aspect ratio cropper (Python OpenCV)](image-aspect-ratio-cropper)
+-------------------
+
+This batch tool crops JPG images in the current folder to a desired aspect ratio. You can select the cropping area with your mouse.
+
+![](image-aspect-ratio-cropper/image-aspect-ratio-cropper.gif)
+
 [Sudoku Solver (PHP)](sudoku-solver)
 -------------------
 
@@ -15,7 +22,7 @@ Sokoban game written in C without any graphic library. Only 100 lines of code.
 
 ![](ascii-sokoban/ascii-sokoban.gif)
 
-[Image noise remover (Python)](image-noise-remover)
+[Image noise remover (Python OpenCV)](image-noise-remover)
 -----------------
 
 This tool removes the noise from low-light images with image stacking.
