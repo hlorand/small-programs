@@ -133,11 +133,10 @@ for img in glob.glob('*.jpg') + glob.glob('*.JPG'):
     if cropit and len(croppingarea) == 2:
         roi = clone[croppingarea[0][1]:croppingarea[1][1], croppingarea[0][0]:croppingarea[1][0]]
         cv2.imwrite(os.getcwd() + "/cropped/" + img, roi,[int(cv2.IMWRITE_JPEG_QUALITY), quality])
-        cv2.imshow("ROI", roi)
         cropit = False
         print("New      W: " + str(roi.shape[1]) + " H: " + str(roi.shape[0]) )
 
-        # move image in the original folder
+        # move image to the "original" folder
         os.rename(os.getcwd() + "/" + img, os.getcwd() + "/original/" + img)
      
     # close all open windows
