@@ -1,4 +1,4 @@
-Image sequence noise remover
+Folder accent remover
 ----------------------------
 
 This tool removes the accents from the charactes from folder names. Example:
