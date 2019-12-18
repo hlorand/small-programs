@@ -56,3 +56,10 @@ This tool helps you to easily generate FFmpeg commands to convert MP4 video file
 Simple Snake game. Only 100 lines of code.
 
 ![](snake/snake.gif)
+
+[Folder accent remover (C#)](folder-accent-remover)
+-----------------
+
+Removes the accents from directory names.
+
+![](folder-accent-remover/folder-accent-remover.png)
