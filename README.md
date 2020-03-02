@@ -8,6 +8,11 @@ This batch tool crops JPG images in the current folder to a desired aspect ratio
 
 ![](image-aspect-ratio-cropper/image-aspect-ratio-cropper.gif)
 
+[Image organizer (Python)](image-organizer)
+-------------------
+
+Use your keyboard to assort images into folders.
+
 [Sudoku Solver (PHP)](sudoku-solver)
 -------------------
 
