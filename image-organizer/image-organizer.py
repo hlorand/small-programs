@@ -23,6 +23,7 @@ import cv2
 import glob
 import os
 import shutil
+import numpy as np
 
 print("Current directory: " + os.getcwd())
 
@@ -32,19 +33,38 @@ images = glob.glob('*.jpg') + glob.glob('*.JPG') + glob.glob('*.JPEG') + glob.gl
 # move history
 folders = []
 
+# create window
+cv2.namedWindow("window",cv2.WINDOW_NORMAL)
+cv2.setWindowProperty("window",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
+cv2.setWindowProperty("window",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_NORMAL)
+cv2.resizeWindow("window", 1200,600)
+cv2.moveWindow("window", 40,40)
+
 i = 0
 while i < len(images):
     
+    #load 3 images
     img = images[i]
+    img2 = images[i+1] if i+1<len(images) else images[i]
+    img3 = images[i+2] if i+2<len(images) else (images[i+1] if i+1<len(images) else images[i])
     image = cv2.imread(img)
+    image2 = cv2.imread(img2)
+    image3 = cv2.imread(img3)
 
-    # create window
-    cv2.namedWindow("image",cv2.WINDOW_NORMAL)
-    cv2.setWindowProperty("image",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
-    cv2.setWindowProperty("image",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_NORMAL)
-    cv2.resizeWindow("image", 700,700)
-    cv2.moveWindow("image", 40,40)
-    cv2.imshow("image", image)
+    # stack images
+    dim = (640, 480)
+    image = cv2.resize(image, dim, interpolation = cv2.INTER_NEAREST)
+    image2 = cv2.resize(image2, dim, interpolation = cv2.INTER_NEAREST)
+    image3 = cv2.resize(image3, dim, interpolation = cv2.INTER_NEAREST)
+
+    # add image num and filename
+    text = str(i+1) + " / " + str(len(images)) + " - " + images[i]
+    cv2.putText(image,text, (5,460), cv2.FONT_HERSHEY_SIMPLEX, 1, 255, 3)
+
+    numpy_horizontal = np.hstack((image, image2, image3))
+    image = np.concatenate((image, image2, image3), axis=1)
+    
+    cv2.imshow("window", image)
 
     # debug info
     print(img)
@@ -77,7 +97,7 @@ while i < len(images):
     folders.append( chr(key) )
 
     # close all open windows
-    cv2.destroyAllWindows()
+    #cv2.destroyAllWindows()
 
     # next image
     i = i + 1
