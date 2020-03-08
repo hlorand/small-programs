@@ -22,6 +22,7 @@ __email__ = "email at hlorand dot hu"
 import cv2
 import glob
 import os
+import sys
 import shutil
 import numpy as np
 
@@ -40,40 +41,66 @@ cv2.setWindowProperty("window",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_NORMAL)
 cv2.resizeWindow("window", 1200,600)
 cv2.moveWindow("window", 40,40)
 
+def calculate_dim(image):
+
+    height, width, channels = image.shape
+
+    if width > height:
+        dim = ( 640, 480)
+    else: 
+        dim = ( 360, 480 )
+    return dim
+
+
 i = 0
 while i < len(images):
     
     #load 3 images
-    img = images[i]
+    img1 = images[i]
     img2 = images[i+1] if i+1<len(images) else images[i]
     img3 = images[i+2] if i+2<len(images) else (images[i+1] if i+1<len(images) else images[i])
-    image = cv2.imread(img)
+    image1 = cv2.imread(img1)
     image2 = cv2.imread(img2)
     image3 = cv2.imread(img3)
 
     # stack images
-    dim = (640, 480)
-    image = cv2.resize(image, dim, interpolation = cv2.INTER_NEAREST)
-    image2 = cv2.resize(image2, dim, interpolation = cv2.INTER_NEAREST)
-    image3 = cv2.resize(image3, dim, interpolation = cv2.INTER_NEAREST)
+    
+    image1 = cv2.resize(image1, calculate_dim(image1), interpolation = cv2.INTER_LINEAR)
+    image2 = cv2.resize(image2, calculate_dim(image2), interpolation = cv2.INTER_LINEAR)
+    image3 = cv2.resize(image3, calculate_dim(image3), interpolation = cv2.INTER_LINEAR)
 
     # add image num and filename
     text = str(i+1) + " / " + str(len(images)) + " - " + images[i]
-    cv2.putText(image,text, (5,460), cv2.FONT_HERSHEY_SIMPLEX, 1, 255, 3)
+    cv2.putText(image1,text, (5,460), cv2.FONT_HERSHEY_SIMPLEX, 1, 255, 3)
 
-    numpy_horizontal = np.hstack((image, image2, image3))
-    image = np.concatenate((image, image2, image3), axis=1)
+    numpy_horizontal = np.hstack((image1, image2, image3))
+    image = np.concatenate((image1, image2, image3), axis=1)
     
     cv2.imshow("window", image)
 
     # debug info
-    print(img)
+    print(img1)
 
     key = cv2.waitKey(0)
 
     # Esc = quit
     if key == 27:
         exit()
+
+    # Space = skip image
+    if key == 32:
+        i = i + 1
+        continue
+    
+    # c,v,b = open image in full size
+    if key == ord('c') or key == ord('v') or key == ord('b'):
+        path = os.path.dirname(os.path.realpath(__file__))
+        if key == ord('c'):
+            os.system("open \"" + path + "/" + img1 + "\"")
+        if key == ord('v'):
+            os.system("open \"" + path + "/" + img2 + "\"")
+        if key == ord('b'):
+            os.system("open \"" + path + "/" + img3 + "\"")
 
     # Backspace = undo last operation
     if key == 8 and i>0:
@@ -82,7 +109,7 @@ while i < len(images):
         os.rename(os.getcwd() + "/" + folders.pop() + "/" + images[i], os.getcwd() + "/" + images[i])
         continue
 
-    if chr(key) not in "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
+    if chr(key) not in "1234567890a  defghijklmnopqrstu wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
         continue
 
     try:
@@ -91,7 +118,7 @@ while i < len(images):
         pass
 
     # move image
-    os.rename(os.getcwd() + "/" + img, os.getcwd() + "/" + chr(key) + "/" + img)
+    os.rename(os.getcwd() + "/" + img1, os.getcwd() + "/" + chr(key) + "/" + img1)
     
     # save history
     folders.append( chr(key) )
